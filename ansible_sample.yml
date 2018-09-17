@@ -1,0 +1,16 @@
+---
+- hosts: 127.0.0.1
+  tasks:
+      - name: create an empty log file on my local machine
+        file:
+             path: /root/ansible/log/monitor.log
+             state: touch
+- hosts: local
+  become: yes
+  tasks:
+      - name: create user
+        user:
+             name: release
+             password: 'release'
+             state: present
+             shell: /bin/bash

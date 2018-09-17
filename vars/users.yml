@@ -1,0 +1,8 @@
+---
+users:
+      - nagios
+      - nrpe
+      - oam
+
+group_name:
+      - users

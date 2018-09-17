@@ -1,0 +1,42 @@
+---
+- hosts: remote
+  become: yes
+  become_user: root
+
+  tasks:
+        - name: create new oam group on remote machine
+          group: 
+                name: oam     
+                state: present
+
+        - name: create new nagios group on remote machine
+          group:
+                name: nagios
+                state: present
+
+        - name: create application user on remote machine
+          user:
+               name: oam
+               password: 'oam'
+               groups: 
+                      - nagios
+                      - release # release user already has been created on machine
+               state: present
+               shell: /bin/bash
+               system: no
+               createhome: yes
+
+        - name: create monitoring user on remote machine
+          user:
+               name: nagios
+               password: 'nagios'
+               groups:
+                      - nagios
+                      - oam
+                      - release # release user already has been created on machine
+               state: present
+               shell: /bin/bash
+               system: no
+               createhome: yes
+
+
