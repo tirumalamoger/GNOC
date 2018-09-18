@@ -10,7 +10,7 @@
   tasks:
       - name: create user
         user:
-             name: release
+             name: tiru_ansible
              password: 'release'
              state: present
              shell: /bin/bash
