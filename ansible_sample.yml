@@ -1,7 +1,7 @@
 ---
 - hosts: 127.0.0.1
   tasks:
-      - name: create an empty log file on my local machine
+      - name: create an empty log file on my local machine and run it with maven project
         file:
              path: /root/ansible/log/monitor.log
              state: touch
